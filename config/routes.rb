@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :reviews
   resources :blogs 
   get "/signup", to: "users#create"
   # resources :users
