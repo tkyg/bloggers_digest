@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :blogs 
   get "/signup", to: "users#create"
   # resources :users
   # Routing logic: fallback requests for React Router.
