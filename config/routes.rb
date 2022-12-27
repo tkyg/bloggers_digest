@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'sessions/create'
+  get 'sessions/destroy'
   resources :reviews
   resources :blogs 
   post "/signup", to: "users#create"
