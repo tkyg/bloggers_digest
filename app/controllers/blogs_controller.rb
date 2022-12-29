@@ -1,5 +1,19 @@
 class BlogsController < ApplicationController
-  skip_before_action :authenticate_user, only: [:create]
+  # need to edit this skip before action
+  skip_before_action :authenticate_user, only: [:index, :show, :create]
+
+  def index
+    render json: Blog.all, status: :ok
+  end
+
+  def show
+    blog = Blog.find_by(id:params[:id])
+    if blog
+      render json: blog, status: :ok
+    else
+      render json: { error: "Blog not found" }, status: :not_found
+    end
+  end
 
   def create
     blog = Blog.new(blog_params)
@@ -9,6 +23,8 @@ class BlogsController < ApplicationController
       render json: {errors: blog.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+
 
   private
   def blog_params
