@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   # need to edit this skip before action
-  skip_before_action :authenticate_user, only: [:index, :show, :create]
+  skip_before_action :authenticate_user, only: [:index, :show, :create, :update]
 
   def index
     render json: Blog.all, status: :ok
@@ -23,6 +23,17 @@ class BlogsController < ApplicationController
       render json: {errors: blog.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+  def update
+    blog = Blog.find_by(id:params[:id])
+    if blog
+      blog.update(blog_params)
+      render json: blog, status: :accepted
+    else
+      render json: { error: "Blog not found" }, status: :not_found
+    end
+  end
+
 
 
 
