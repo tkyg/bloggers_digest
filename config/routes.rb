@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   
   resources :reviews
-  resources :blogs, only: [:index, :show, :create, :update]
+  resources :blogs, only: [:index, :show, :create, :update, :destroy]
 
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
