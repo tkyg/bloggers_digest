@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :show, :create, :update, :destroy]
   resources :blogs, only: [:index, :show, :create, :update, :destroy]
 
+  patch "/reviews/:id/likes", to: "reviews#increment_likes"
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
-  
+
   # resources :users
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
