@@ -1,11 +1,32 @@
 import React, { useState } from 'react'
+import { headers } from '../../global'
 
-const Signup = () => {
+const Signup = ({ loginUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = e => {
     e.preventDefault()
+
+    const strongParams = {
+      username, 
+      password
+    }
+    // make a post request to /signup
+    // loginUser
+    fetch('/signup', {
+      method: "POST",
+      headers,
+      body: JSON.stringify(strongParams),
+    })
+    .then((r) => r.json())
+    .then(data => {
+      if(data.errors) {
+        console.log(data.errors)
+      } else {
+        loginUser(data)
+      }
+    })
   }
 
   return (

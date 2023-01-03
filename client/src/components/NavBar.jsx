@@ -8,6 +8,8 @@ const NavBar = () => {
     e.preventDefault();
   }
 
+
+
   return (
     <ul>
     <li><Link to="/">Home</Link></li>
