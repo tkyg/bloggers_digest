@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { headers } from '../../global'
 
 const Signup = ({ loginUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = e => {
     e.preventDefault()
-
-    const strongParams = {
-      username, 
-      password
-    }
-    // make a post request to /signup
-    // loginUser
     fetch('/signup', {
       method: "POST",
       headers,
-      body: JSON.stringify(strongParams),
+      body: JSON.stringify({username, password}),
     })
     .then((r) => r.json())
     .then(data => {
@@ -25,6 +20,7 @@ const Signup = ({ loginUser }) => {
         console.log(data.errors)
       } else {
         loginUser(data)
+        navigate('/')
       }
     })
   }

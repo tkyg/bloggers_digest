@@ -1,18 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
-const NavBar = ({ loggedIn }) => {
+const NavBar = ({ currentUser, loggedIn, logoutUser }) => {
+
+  const navigate = useNavigate()
 
   const handleLogout = e => {
     e.preventDefault();
+    fetch('/logout', {
+      method: "DELETE",
+    })
+    .then(() => {
+      logoutUser()
+      navigate('/')
+    })
   }
+
+//   function handleLogout() {
+//   fetch('/logout', {
+//     method: 'DELETE',
+//   }).then(() => logoutUser())
+// }
+
+  // const handleLogout = e => {
+  //   e.preventDefault();
+  //   fetch('/logout')
+  //   .then(resp => {
+  //     logoutUser()
+  //   })
+  // }
 
   const loggedInRoutes = () => {
     return(
       <>
         <li><Link to="/profile">Profile</Link></li>
-        <li><a href="#" onClick={ handleLogout }>Logout</a></li>
+        <h3>Welcome {currentUser.username}</h3>
+        <button onClick={handleLogout}>Logout</button>
+        {/* <li><Link to="/logout" onClick={ handleLogout }>Logout</Link></li> */}
       </>
     )
   }
@@ -25,6 +50,8 @@ const NavBar = ({ loggedIn }) => {
       </>
     )
   }
+
+
 
   return (
     <ul>

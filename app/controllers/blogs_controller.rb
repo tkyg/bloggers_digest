@@ -3,7 +3,8 @@ class BlogsController < ApplicationController
   skip_before_action :authenticate_user, only: [:index, :show, :create, :update, :destroy]
 
   def index
-    render json: Blog.all, status: :ok
+    blogs = current_user.blogs
+    render json: blogs, status: :ok
   end
 
   def show
@@ -14,6 +15,15 @@ class BlogsController < ApplicationController
       render json: { error: "Blog not found" }, status: :not_found
     end
   end
+
+  # def show 
+  #   blog = current_user.blogs.find_by(id: params[:id])
+  #   if blog
+  #     render json: blog, status: :ok
+  #   else
+  #     render json: { error: "Blog not found" }, status: :unauthorized
+  #   end
+  # end
 
   def create
     blog = Blog.new(blog_params)

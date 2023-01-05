@@ -7,19 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "🐕 Seeding data..."
 
+Blog.destroy_all
 Review.destroy_all
 User.destroy_all
-Blog.destroy_all
 
-test_user_1 = User.create(username: "Test 1", password: "1234")
-test_user_2 = User.create(username: "Test 2", password: "4321")
+user1 = User.create(username: "Test 1", password: "1234")
+user2 = User.create(username: "Test 2", password: "4321")
 
-b1 = Blog.create(title: "Wine Pairing: A Beginner's Guide", content: "Pairing wine with food...")
-b2 = Blog.create(title: "Photography 101", content: "Clicking a good picture...")
-b3 = Blog.create(title: "Beef Dumpling Recipe", content: "Dumplings are my favorite...")
+b1 = Blog.create(title: "Wine Pairing: A Beginner's Guide", content: "Pairing wine with food...", user: user2)
+b2 = Blog.create(title: "Photography 101", content: "Clicking a good picture...", user: user1)
+b3 = Blog.create(title: "Beef Dumpling Recipe", content: "Dumplings are my favorite...", user: user2)
 
-review_1 = Review.create(comment: "Lorem ipsum", user: test_user_1, blog: b2)
-review_2 = Review.create(comment: "Lorem ipsum ipsum", user: test_user_2, blog: b3)
-review_3 = Review.create(comment: "Lorem ipsum dolor sit amet", user: test_user_1, blog: b3)
+review_1 = Review.create(comment: "Lorem ipsum", blog: b1, user: user1)
+review_2 = Review.create(comment: "Lorem ipsum ipsum", blog: b2, user: user2)
+review_3 = Review.create(comment: "Lorem ipsum dolor sit amet", blog: b3, user: user1)
 
 puts "✅ Done seeding!"

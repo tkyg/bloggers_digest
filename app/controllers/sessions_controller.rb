@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user, only: [:create]
+  skip_before_action :authenticate_user, only: [:create, :destroy]
 
   #POST '/login'
   def create
@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       render json: user, status: :created
     else
-      render json: { errors: ["Invalid Username or Password"]}, status: :unprocessable_entity
+      render json: { errors: ["Invalid Username or Password"]}, status: :unauthorized
     end
   end
 
   # DELETE '/logout'
   def destroy
     session.delete :user_id
-    render json: { message: "You have been logged out" }
+    head :no_content
   end
 end
