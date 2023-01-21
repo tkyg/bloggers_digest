@@ -1,23 +1,27 @@
 class BlogsController < ApplicationController
   # need to edit this skip before action
-  skip_before_action :authenticate_user, only: [:index, :show, :create, :update, :destroy]
+  skip_before_action :authenticate_user, only: [:index, :show]
+
+  # def index
+  #   blogs = current_user.blogs
+  #   render json: blogs, status: :ok
+  # end
 
   def index
-    blogs = current_user.blogs
-    render json: blogs, status: :ok
+    render json: Blog.all, status: :ok
   end
 
   def show
     blog = Blog.find_by(id:params[:id])
-    if blog
+    if blog 
       render json: blog, status: :ok
     else
-      render json: { error: "Blog not found" }, status: :not_found
+      render json: { error: "Blog not found"}, status: :not_found
     end
   end
 
-  # def show 
-  #   blog = current_user.blogs.find_by(id: params[:id])
+  # def show
+  #   blog = current_user.blogs.find_by(id:params[:id])
   #   if blog
   #     render json: blog, status: :ok
   #   else
@@ -25,12 +29,12 @@ class BlogsController < ApplicationController
   #   end
   # end
 
-  def create
-    blog = Blog.new(blog_params)
-    if blog.save
+  def create #POST
+    blog = current_user.blogs.create(blog_params)
+    if blog.valid?
       render json: blog, status: :created
     else
-      render json: {errors: blog.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: blog.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -53,9 +57,21 @@ class BlogsController < ApplicationController
       render json: { error: "Blog not found" }, status: :not_found
     end
   end
+  # def destroy
+  #   @blog.destroy
+  #   render json: @blog
+  # end
 
   private
-  def blog_params
-    params.permit(:title, :content)
+
+  def current_user
+    User.find_by(id: session[:user_id])
   end
+
+  def blog_params
+    params.permit(:title, :content, :created_at)
+  end
+  # def blogs_params
+  #   params.require(:blog).permit(:title, :content)
+  # end
 end

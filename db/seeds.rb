@@ -11,8 +11,8 @@ Blog.destroy_all
 Review.destroy_all
 User.destroy_all
 
-user1 = User.create(username: "Test 1", password: "1234")
-user2 = User.create(username: "Test 2", password: "4321")
+user1 = User.create(username: "Test1", password: "1234")
+user2 = User.create(username: "Test2", password: "4321")
 
 b1 = Blog.create(title: "Wine Pairing: A Beginner's Guide", content: "Pairing wine with food...", user: user2)
 b2 = Blog.create(title: "Photography 101", content: "Clicking a good picture...", user: user1)

@@ -1,48 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './components/Home';
-import NavBar from './components/NavBar';
-import Signup from './components/auth/Signup';
-import Login from './components/auth/Login';
-import Profile from './components/Profile';
+import { UserProvider } from './components/context/User'
+import Home from './components/home/Home'
+import NavBar from './components/navbar/NavBar'
+import Signup from './components/auth/Signup'
+import Login from './components/auth/Login'
+import Profile from './components/blog/Profile'
+import Blogs from './components/blog/Blogs'
+import EditBlog from './components/blog/EditBlog'
+import BlogDetails from './components/blog/BlogDetails'
+import './App.css'
 
-import './App.css';
 
-function App() {
-  const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false)
 
-  useEffect(() => {
-    fetch('/me')
-    .then(resp => resp.json())
-    .then(data => {
-      setCurrentUser(data)
-      data.error ? setLoggedIn(false) : setLoggedIn(true)
-    })
-  }, [])
-
-  const loginUser = currentUser => {
-    setCurrentUser(currentUser);
-    setLoggedIn(true)
-  }
-  
-  const logoutUser = () => {
-    setCurrentUser({})
-    setLoggedIn(false);
-  }
+function App(props){
 
   return (
-    <Router>
-      <NavBar currentUser={currentUser} loggedIn={ loggedIn } logoutUser={ logoutUser }/>
-      <Routes>
-        <Route path="/" element={ <Home /> } />
-        <Route path="/login" element={ <Login loginUser={ loginUser }/> } />
-        <Route path="/signup" element={ <Signup loginUser={ loginUser } /> } />
-        <Route path="/profile" element={ <Profile /> } />
-       </Routes>
-    </Router>
-  );
+    <div className='App'>
+      <Router>
+      <UserProvider>
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<Home />}/>
+          <Route exact path="/signup" element={<Signup />}/>
+          <Route exact path="/login" element={<Login />}/>
+          <Route exact path="/profile" element={<Profile />}/>
+          {/* <Route exact path="/blogs" element={<Blogs />}/> */}
+          <Route path="/blogs" element={ <Blogs />} />
+          <Route path="/blogs/:id/edit" element={<EditBlog />}/>
+          <Route path="/blogs/:id" element={ <BlogDetails />} />
+        </Routes>
+      </UserProvider>
+      </Router>
+    </div>
+  )
 }
 
-
-export default App;
+export default App

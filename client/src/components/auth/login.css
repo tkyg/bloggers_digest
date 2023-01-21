@@ -1,0 +1,103 @@
+/* .login {
+  display: flex;
+}
+
+.loginWrapper {
+  flex: 9;
+  padding: 20px;
+}
+
+.loginTitle {
+  display: flex;
+  align-items: center;
+
+}
+
+.loginTitleLabel {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: lightcoral;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm > label{
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.loginForm > input{
+  color: gray;
+  margin: 10px 0;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.loginButton {
+  width: 150px;
+  align-self: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: teal;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+} */
+
+.login {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  background-size: cover;
+  background-size: cover;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  max-height: 300px;
+  margin: auto;
+  padding: 40px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.loginTitleLabel {
+  font-size: 50px;
+  font-family: 'Varela', sans-serif;
+}
+
+.loginForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm > label {
+  margin: 10px 0;
+}
+
+.loginInput {
+  padding: 10px;
+  background-color: white;
+  /* border: none; */
+}
+
+.loginButton {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: teal;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px
+}

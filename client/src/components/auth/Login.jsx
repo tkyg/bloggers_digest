@@ -1,54 +1,72 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { headers } from '../../global'
-const Login = ({ loginUser }) => {
+import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/User'
+import './login.css'
+
+const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [errorsList, setErrorsList] = useState([])
+  const {login} = useContext(UserContext)
+  const navigate = useNavigate()
 
   const handleSubmit = e => {
     e.preventDefault()
     fetch('/login', {
       method: "POST",
       headers,
-      body: JSON.stringify({ username, password})
+      body: JSON.stringify({ 
+        username: username, 
+        password: password
+      })
     })
     .then(resp => resp.json())
-    .then(data => {
-      if(data.errors) {
-        console.log(data.errors)
+    .then(user => {
+     if(!user.errors) {
+        login(user)
+        navigate('/')
       } else {
-        loginUser(data)
+        setUsername('')
+        setPassword('')
+        const errorList = user.errors.map(e => <li>{e}</li>)
+        setErrorsList(errorList)
       }
     })
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit= { handleSubmit }>
-        <div>
+    <div className="login">
+      <span className='loginTitleLabel'>LOGIN</span>
+        <form className='loginForm' onSubmit= { handleSubmit }>
           <label htmlFor="username">Username: </label>
           <input
             type="text" 
             name="username" 
             id="username" 
+            className="loginInput"
+            placeholder='Enter your username..'
             value={ username } 
             onChange={ e => setUsername(e.target.value)}
             autoFocus={ true }
           />  
-        </div>
-        <div>
           <label htmlFor="password">Password: </label>
           <input
             type="password"
             name="password"
             id="password"
+            className="loginInput"
+            placeholder='Enter your password..'
             value={ password }
             onChange={ e => setPassword(e.target.value)}
           />
-        </div> <br />
-        <input type="submit" value="Login"/>
-      </form>
-    </div>
+          <button className="loginButton">Login</button>
+        </form>
+        <ul>
+        {errorsList}
+      </ul>
+      </div>
+    // </div>
   )
 }
 
