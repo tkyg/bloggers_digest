@@ -1,0 +1,33 @@
+.write {
+  padding-top: 50px;
+}
+
+.writeForm {
+  position: relative;
+}
+
+.writeFormGroup {
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.writeInput{
+  font-size: 35px;
+  border: none;
+  padding: 20px;
+  width: 70vw;
+  font-family: 'Times New Roman', Times, serif;
+  /* padding-left: 1.5em;
+  text-indent:-1.5em; */
+}
+
+.writeInput:focus {
+  outline: none;
+}
+
+.writeText {
+  font-size: 18px;
+  height: 100vh;
+  font-family: 'Times New Roman', Times, serif;
+}
