@@ -1,0 +1,44 @@
+.write {
+  padding-top: 50px;
+}
+
+.writeForm {
+  position: relative;
+}
+
+.writeFormGroup {
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.writeInput{
+  font-size: 35px;
+  border: none;
+  padding: 20px;
+  width: 70vw;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.writeInput:focus {
+  outline: none;
+}
+
+.writeText {
+  font-size: 18px;
+  height: 100vh;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.writeSubmit{
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  color: white;
+  background-color: teal;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
