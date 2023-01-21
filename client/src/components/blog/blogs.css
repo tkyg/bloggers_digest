@@ -1,0 +1,7 @@
+.blogs {
+  /* flex: 9; */
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  text-align: center;
+}
