@@ -1,0 +1,89 @@
+/* .singleBlog {
+  flex: auto;
+} */
+.singleBlog {
+  box-shadow: 0 10px 4px 0 rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  max-height: auto;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.singleBlogWrapper {
+  padding: 20px;
+  padding-right: 20px;
+}
+
+.singleBlogTitle{
+  text-align: center;
+  margin: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 28px;
+}
+
+.singleBlogEdit{
+  float: right;
+  font-size: 13px;
+  color: teal;
+}
+
+.singleBlogDelete{
+  float: right;
+  font-size: 13px;
+  color: salmon;
+}
+
+.singleBlogReturn{
+  float: left;
+  font-size: 13px;
+  color: grey
+}
+.singleBlogIcon{
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* .singleBlogIcon:first-child{
+  color: teal;
+} */
+
+/* .singleBlogIcon:last-child{
+  color: tomato;
+} */
+
+.singleBlogInfo{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #b39656;
+}
+
+.singleBlogContent{
+  color: rgb(33, 33, 33);
+  font-size: 14px;
+  line-height: 25px;
+  font-family: 'Times New Roman', Times, serif;
+  text-indent: 20px;
+}
+.singleBlogContent.a{
+  text-align-last: right;
+}
+
+.singleBlogContent::first-letter{
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  
+}
+.blogAuthor{
+  font-family: "Varela Round", sans-serif;
+  font-size: 11px;
+  color: #be9656;
+  line-height: 20px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
