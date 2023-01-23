@@ -1,6 +1,30 @@
 # Project Template: React/Rails API
+# **BLOGGER'S DIGEST**
 
 ## Description
+Blogger's Digest is a blogging app made for writing enthusiasts. It's an app for storytellers that want to share to the world a figment of their imagination, it's for travel bloggers that want to tell tales of their adventures, it's for the connoisseurs that want to give instructions for, "The best guide to...", it's a place that has a compliations of materials and information, a platform for a user to share their thoughts and ideas.
+
+Anyone can create an account simply by choosing a username and password, no email addresses required. 
+![Signup Demo](https://media.giphy.com/media/1J2cVAHbMdM3jYaHiE/giphy.gif)
+
+If the person is a returning user, they can login with their credentials. 
+![Login Demo](https://media.giphy.com/media/ZID32DfoxS1Xr7Fb9W/giphy.gif)
+
+To read blogs written by other bloggers visit the Blogs page from the navigation bar. To write a blog, visit the profile page from the navigation bar and click Write. Once a blog is complete, click publish to share it with others. A logged in user has access to editing the blogs they have written and as well as deleting it, both features are available on the profile page. 
+
+Demonstrated in this gif is how easily this single page application can be used.
+![Navigation Demo](https://media.giphy.com/media/84LygPIbjnHqd8zH7J/giphy.gif)
+
+## Links
+To read my blog on how to perform CRUD in Ruby on Rails [Click Here](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)
+Or to read about Rails Generators [Click Here](https://medium.com/@ttenkyong/rails-generator-the-basics-e132c616b9ec)
+
+## Installation
+1. Fork and clone the repo
+2. Cd into the project and run npm install
+3. Run the json-server with: npm run server
+4. In a new terminal Run the React server with: npm start
+5. In another terminal Run the Rails Server with: rails s
 
 This project is scaffolded so that you can build a React frontend and Rails
 backend together, and easily deploy them to Render.
@@ -349,3 +373,11 @@ troubleshoot:
 
 - [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
 - [Render Databases Guide](https://render.com/docs/databases)
+
+## Authors and Acknowledgment
+
+Sincere thank you to [Enoch Griffith](https://www.linkedin.com/in/enochgriffith), my cohort lead for his constant support and guidance.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
