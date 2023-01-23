@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext }from 'react'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/User'
-import './blogDetails.css'
+import '../blogStyle/blogDetails.css'
 
 const BlogDetails = () => {
   const [ singleBlog, setSingleBlog ] = useState('')
@@ -28,6 +28,9 @@ const BlogDetails = () => {
     setUser(userCopy)
     
     setBlogs((blogs) => blogs.filter((blog) => blog.id !== id)) 
+    // setBlogs([]) 
+    // console.log((blogs) => blogs.filter((blog) => blog.id !== id))
+    // console.log(blogs.filter((blog) => blog.id !== id))
     navigate('/profile')
   }
 
@@ -45,7 +48,7 @@ const BlogDetails = () => {
             <i className="singleBlogIcon fa-regular fa-trash-can" onClick={() => deleteBlog(singleBlog.id)}> Delete Blog
             </i>
           </div>
-          <NavLink to={'/profile'}>
+          <NavLink to={'/blogs'}>
             <div className="singleBlogReturn">
               <i class="fa-solid fa-arrow-left"> Return
               </i>

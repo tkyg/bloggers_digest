@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink} from "react-router-dom";
-import "./blogCard.css"
+import "../blogStyle/blogCard.css"
 
 const BlogCard = ({blog}) => {
   return (

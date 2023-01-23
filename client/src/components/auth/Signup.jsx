@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/User'
 import { useNavigate } from 'react-router-dom'
-// import { headers } from '../../global'
 import './signup.css'
 
 const Signup = () => {

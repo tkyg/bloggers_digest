@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../context/User'
 import BlogCard from '../blog/BlogCard'
-import "./blogs.css"
+import "../blogStyle/blogs.css"
 
 
 const Blogs = () => {

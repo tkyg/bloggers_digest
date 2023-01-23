@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  # need to edit this skip before action
+  
   skip_before_action :authenticate_user, only: [:index, :show]
 
   # def index

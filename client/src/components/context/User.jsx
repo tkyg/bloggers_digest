@@ -12,9 +12,6 @@ function UserProvider({ children }) {
     fetch('/me')
     .then(resp => resp.json())
     .then(data => {
-      // console.log(data)
-      // debugger
-      // setUser([...blogs, data])
       setUser(data)
       if (data.error) {
         setLoggedIn(false)
@@ -29,7 +26,6 @@ function UserProvider({ children }) {
     fetch('/blogs')
     .then(resp => resp.json())
     .then(data => {
-      // console.log(data)
       setBlogs(data)
     })
   }
@@ -45,14 +41,13 @@ function UserProvider({ children }) {
     })
     .then(resp => resp.json())
     .then(data => {
-      setBlogs([data, ...blogs])
       const newBlogList = [data, ...blogs]
-      const updatedUserCopy = {...user}
-      updatedUserCopy.blogs = newBlogList
-      setUser(updatedUserCopy)
-      
-      // window.location.reload()
-      navigate('/profile')
+      const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
+      const userCopy = {...user}
+      userCopy.blogs = userNewBlogsList
+      setUser(userCopy)
+      setBlogs(newBlogList)
+      navigate('/blogs')
     })
   }
 

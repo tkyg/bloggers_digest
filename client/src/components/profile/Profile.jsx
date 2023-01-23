@@ -12,18 +12,17 @@ const Profile = () => {
     setFormFlag(false)
   }
   
-  // to remove deleted blog from frontend i have to change from user.blogs.map((blog, index)=>... to blogs.map)
-  // orelse my filter method on setUser within my Blog Details does not change my blogs list in profile page. 
   if (loggedIn) {
     const userBlogsList = user.blogs.map((blog, index) => <UserBlogCard key={index} blog={blog}/>)
-  //  debugger
       return (
         <div className='profile'>
           {formFlag ?
           <BlogForm addBlogFlag={addBlogFlag}/>
           :
-          <div className="singleBlogWrite"><i class="fa-regular fa-pen-to-square" onClick={() => setFormFlag(true)}> Write a Blog</i></div>
-          // <button onClick={() => setFormFlag(true)}></button>
+          <div className="singleBlogWrite">
+            <i class="fa-regular fa-pen-to-square" onClick={() => setFormFlag(true)}> Write a Blog
+            </i>
+          </div>
           }
           {userBlogsList}
         </div>

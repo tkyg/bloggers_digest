@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/User';
-import "./blogForm.css"
+import "../blogStyle/blogForm.css"
 
 const BlogForm = ({addBlogFlag}) => {
   const [title, setTitle] = useState("");

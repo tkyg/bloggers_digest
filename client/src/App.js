@@ -5,7 +5,7 @@ import Home from './components/home/Home'
 import NavBar from './components/navbar/NavBar'
 import Signup from './components/auth/Signup'
 import Login from './components/auth/Login'
-import Profile from './components/blog/Profile'
+import Profile from './components/profile/Profile'
 import Blogs from './components/blog/Blogs'
 import EditBlog from './components/blog/EditBlog'
 import BlogDetails from './components/blog/BlogDetails'
@@ -25,7 +25,6 @@ function App(props){
           <Route exact path="/signup" element={<Signup />}/>
           <Route exact path="/login" element={<Login />}/>
           <Route exact path="/profile" element={<Profile />}/>
-          {/* <Route exact path="/blogs" element={<Blogs />}/> */}
           <Route path="/blogs" element={ <Blogs />} />
           <Route path="/blogs/:id/edit" element={<EditBlog />}/>
           <Route path="/blogs/:id" element={ <BlogDetails />} />

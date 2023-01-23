@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/User';
-import './editBlog.css'
+import '../blogStyle/editBlog.css'
 
 
 const EditBlog = () => {
