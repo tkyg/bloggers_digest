@@ -8,8 +8,14 @@ const Home = () => {
     <>
       <Header />
       <p>Welcome to Blogger's Digest.</p>
-      <p>To start reading blogs navigate to Blogs page.</p>
-      <p>Click on profile page to write a new blog, or to edit or delete your posted blog.</p>
+      <br/>
+      <p>To enjoy the features of this website create an account by navigating to the Signup link.</p>
+      <br/>
+      <p>If you are a returning user navigate to Login.</p>
+      <br/>
+      <p>Once logged-in, a user can start reading blogs by navigating to Blogs page.</p>
+      <br/>
+      <p>A logged-in user can also, write a new blog, edit or delete a posted blog through the Profile page.</p>
     </>
   )
 }

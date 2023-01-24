@@ -14,7 +14,7 @@ const NavBar = () => {
     })
     .then(() => {
       logout()
-      navigate('/login')
+      navigate('/')
     })
   }
   if (loggedIn) {

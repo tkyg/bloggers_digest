@@ -12,7 +12,7 @@ If the person is a returning user, they can login with their credentials.
 
 ![Login Demo](https://media.giphy.com/media/ZID32DfoxS1Xr7Fb9W/giphy.gif)
 
-To read blogs written by other bloggers visit the Blogs page from the navigation bar. To write a blog, visit the profile page from the navigation bar and click Write. Once a blog is complete, click publish to share it with others. A logged in user has access to editing the blogs they have written and as well as deleting it, both features are available on the profile page. 
+To read blogs written by other bloggers visit the Blogs page from the navigation bar. To write a blog, visit the profile page from the navigation bar and click Write. Once a blog is complete, click publish to share it with others. A logged in user has access to editing the blogs they have written and as well as deleting it, both features are available through the blogs they have written. 
 
 Demonstrated in this gif is how easily this single page application can be used.
 
@@ -22,12 +22,13 @@ Demonstrated in this gif is how easily this single page application can be used.
 To read my blog on how to perform CRUD in Ruby on Rails [Click Here](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)
 Or to read about Rails Generators [Click Here](https://medium.com/@ttenkyong/rails-generator-the-basics-e132c616b9ec)
 
+For a quick walk-through of my full-stack project, and available features [Click Here](https://youtu.be/EmxhXOaBK40)
+
 ## Installation
 1. Fork and clone the repo
-2. Cd into the project and run npm install
-3. Run the json-server with: npm run server
-4. In a new terminal Run the React server with: npm start
-5. In another terminal Run the Rails Server with: rails s
+2. Cd into a file and run npm install
+3. In a new terminal Run the React server with: npm start
+4. In another terminal Run the Rails Server with: rails s
 
 This project is scaffolded so that you can build a React frontend and Rails
 backend together, and easily deploy them to Render.

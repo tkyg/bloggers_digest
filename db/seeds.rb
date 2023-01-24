@@ -18,8 +18,8 @@ b1 = Blog.create(title: "Wine Pairing: A Beginner's Guide", content: "Pairing wi
 b2 = Blog.create(title: "Photography 101", content: "Clicking a good picture...", user: user1)
 b3 = Blog.create(title: "Beef Dumpling Recipe", content: "Dumplings are my favorite...", user: user2)
 
-review_1 = Review.create(comment: "Lorem ipsum", blog: b1, user: user1)
-review_2 = Review.create(comment: "Lorem ipsum ipsum", blog: b2, user: user2)
-review_3 = Review.create(comment: "Lorem ipsum dolor sit amet", blog: b3, user: user1)
+review_1 = Review.create(comment: "This Wine Pairing blog was awesome", blog: b1, user: user1)
+review_2 = Review.create(comment: "The instructions for photography 101 was detailed", blog: b2, user: user2)
+review_3 = Review.create(comment: "The dumplings came out awesome", blog: b3, user: user1)
 
 puts "✅ Done seeding!"
