@@ -9,7 +9,7 @@ import Profile from './components/profile/Profile'
 import Blogs from './components/blog/Blogs'
 import EditBlog from './components/blog/EditBlog'
 import BlogDetails from './components/blog/BlogDetails'
-import Review from './components/review/Review'
+import ReviewForm from './components/review/ReviewForm'
 import './App.css'
 
 
@@ -29,8 +29,7 @@ function App(props){
           <Route path="/blogs" element={ <Blogs />} />
           <Route path="/blogs/:id/edit" element={<EditBlog />}/>
           <Route path="/blogs/:id" element={ <BlogDetails />} />
-          <Route path="/reviews" element={ <Review />} />
-
+          <Route path="/reviews" element={ <ReviewForm />} />
         </Routes>
       </UserProvider>
       </Router>

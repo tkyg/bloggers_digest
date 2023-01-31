@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import '../blogStyle/userBlogCard.css'
 
 const UserBlogCard = ({blog}) => {
-  // console.log(blog)
   return (
     <div className="blog">
       <div className="blogInfo">
@@ -13,7 +12,6 @@ const UserBlogCard = ({blog}) => {
           </span>
         </NavLink>
         <p className='blogContent'>{blog.content}</p>
-        {/* <p>{blog.username}</p> */}
       </div>
     </div>
   )

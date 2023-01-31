@@ -21,5 +21,6 @@ b3 = Blog.create(title: "Beef Dumpling Recipe", content: "Dumplings are my favor
 review_1 = Review.create(comment: "This Wine Pairing blog was awesome", blog: b1, user: user1)
 review_2 = Review.create(comment: "The instructions for photography 101 was detailed", blog: b2, user: user2)
 review_3 = Review.create(comment: "The dumplings came out awesome", blog: b3, user: user1)
+review_4 = Review.create(comment: "This dumpling recipe is the best", blog: b3, user: user1)
 
 puts "✅ Done seeding!"

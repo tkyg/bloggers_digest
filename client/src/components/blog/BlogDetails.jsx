@@ -1,12 +1,14 @@
 import React, {useState, useEffect, useContext }from 'react'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/User'
+import ReviewForm from '../review/ReviewForm'
 import '../blogStyle/blogDetails.css'
 
 const BlogDetails = () => {
   const [ singleBlog, setSingleBlog ] = useState('')
-  const { setUser, setBlogs, user } = useContext(UserContext)
+  const { user, setUser, blogs, setBlogs } = useContext(UserContext)
   const {id} = useParams()
+  const [currentBlog, setCurrentBlog] = useState({reviews: []})
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const BlogDetails = () => {
       .then(response => response.json())
       .then(data => {
         setSingleBlog(data)
+        setCurrentBlog(data)
       })
   }, [])
 
@@ -26,12 +29,12 @@ const BlogDetails = () => {
     userCopy.blogs = newBlogs
     // console.log(userCopy)
     setUser(userCopy)
-    
     setBlogs((blogs) => blogs.filter((blog) => blog.id !== id)) 
-    // setBlogs([]) 
-    // console.log((blogs) => blogs.filter((blog) => blog.id !== id))
-    // console.log(blogs.filter((blog) => blog.id !== id))
     navigate('/profile')
+  }
+
+  const addReview = (data) => {
+    setCurrentBlog(data)
   }
 
   if(user.id && singleBlog.user && user.id === singleBlog.user.id){
@@ -62,6 +65,13 @@ const BlogDetails = () => {
             {singleBlog.content}
           </p>
         </div>
+        <div> Comments:
+          {currentBlog.reviews.map(review => (
+            <div key={review.id}>
+              <li>{review.comment}</li>
+            </div>
+          ))}
+        </div>
       </div>
       )
   } else {
@@ -80,7 +90,16 @@ const BlogDetails = () => {
         <p className='singleBlogContent'>
           {singleBlog.content}
         </p>
-        {/* <span className='blogAuthor'>Written By: {singleBlog.user.username}</span> */}
+        <br/>
+        <ReviewForm addReview={addReview}/>
+        <br/>
+        <div> Comments:
+          {currentBlog.reviews.map(review => (
+            <div key={review.id}>
+              <li>{review.comment}</li>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
