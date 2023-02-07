@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect, useContext }from 'react'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/User'
@@ -5,35 +6,33 @@ import ReviewForm from '../review/ReviewForm'
 import '../blogStyle/blogDetails.css'
 
 const BlogDetails = () => {
-  const [ singleBlog, setSingleBlog ] = useState('')
-  const { user, setUser, blogs, setBlogs } = useContext(UserContext)
+  const [singleBlog, setSingleBlog] = useState({})
+  const { user, setUser, setBlogs } = useContext(UserContext)
   const {id} = useParams()
   const [currentBlog, setCurrentBlog] = useState({reviews: []})
   const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`/blogs/${id}`)
-      .then(response => response.json())
+      .then(resp => resp.json())
       .then(data => {
         setSingleBlog(data)
         setCurrentBlog(data)
       })
-  }, [])
+  }, [id])
 
   const deleteBlog = async id => {
-    const response = await fetch(`/blogs/${ id }`, { method: "DELETE"})
-    // => get user's blogs and filter out the one we dont want anymore. 
+    await fetch(`/blogs/${id}`, { method: "DELETE"})
     const newBlogs = (user.blogs.filter(blog => blog.id !== id))
     const userCopy = {...user}
-    // => replace current value of blogs(which is an object) with updated array. 
     userCopy.blogs = newBlogs
-    // console.log(userCopy)
     setUser(userCopy)
-    setBlogs((blogs) => blogs.filter((blog) => blog.id !== id)) 
+    setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== id)) 
     navigate('/profile')
   }
 
   const addReview = (data) => {
+    console.log(data)
     setCurrentBlog(data)
   }
 
@@ -53,7 +52,7 @@ const BlogDetails = () => {
           </div>
           <NavLink to={'/blogs'}>
             <div className="singleBlogReturn">
-              <i class="fa-solid fa-arrow-left"> Return
+              <i className="fa-solid fa-arrow-left"> Return
               </i>
             </div>
           </NavLink>
@@ -66,11 +65,11 @@ const BlogDetails = () => {
           </p>
         </div>
         <div> Comments:
-          {currentBlog.reviews.map(review => (
-            <div key={review.id}>
-              <li>{review.comment}</li>
+          {currentBlog.reviews.map((review, index) => (
+            <div key={index}>
+              <p>{review.comment}</p>
             </div>
-          ))}
+            ))}    
         </div>
       </div>
       )
@@ -79,7 +78,7 @@ const BlogDetails = () => {
       <div className="singleBlog">
         <NavLink to={'/blogs'}>
           <div className="singleBlogReturn">
-            <i class="fa-solid fa-arrow-left"> Back to Blogs
+            <i className="fa-solid fa-arrow-left"> Back to Blogs
             </i>
           </div>
         </NavLink>
@@ -93,7 +92,8 @@ const BlogDetails = () => {
         <br/>
         <ReviewForm addReview={addReview}/>
         <br/>
-        <div> Comments:
+        <div> 
+          Comments:
           {currentBlog.reviews.map(review => (
             <div key={review.id}>
               <li>{review.comment}</li>
@@ -105,3 +105,6 @@ const BlogDetails = () => {
   }
 }
 export default BlogDetails
+
+
+

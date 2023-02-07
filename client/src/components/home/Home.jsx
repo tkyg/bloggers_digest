@@ -9,7 +9,7 @@ const Home = () => {
       <Header />
       <p>Welcome to Blogger's Digest.</p>
       <br/>
-      <p>To enjoy the features of this website create an account by navigating to the Signup link.</p>
+      <p>To enjoy the features of this website create an account by navigating to Signup link.</p>
       <br/>
       <p>If you are a returning user navigate to Login.</p>
       <br/>

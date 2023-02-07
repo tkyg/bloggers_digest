@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/User';
 import "../blogStyle/blogForm.css"
 
-const BlogForm = ({addBlogFlag}) => {
+const BlogForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { addBlog } = useContext(UserContext)
+  const { addBlog, errors, setErrors } = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -13,10 +13,19 @@ const BlogForm = ({addBlogFlag}) => {
       title: title,
       content: content
     })
-    addBlogFlag()
+    setErrors('')
   }
   return (
     <div className="write">
+      <div className='bar error'>
+        {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+              <p key={error}>{error}</p>
+            ))}
+          </ul>
+        )}
+      </div>
       <form className='writeForm' onSubmit={handleSubmit}>
         <div className="writeFormGroup">
           <input
@@ -39,7 +48,7 @@ const BlogForm = ({addBlogFlag}) => {
             className="writeInput writeText"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-          />
+          />  
         </div>
         <button className="writeSubmit">Publish</button>
       </form>

@@ -20,7 +20,7 @@ const EditBlog = () => {
         setTitle(data.title)
         setContent(data.content)
       })
-  }, [])
+  }, [id])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -33,26 +33,27 @@ const EditBlog = () => {
       })
     }
     await fetch(`/blogs/${ id }`, options)
-    .then(resp => resp.json())
-    .then(data => {
-      setBlogs((blogs)=>blogs.map(blog =>{
-      if(blog.id === data.id){
-        return data
-      } else {
-        return blog
-      }}))
-      const updatedBlogs = (user.blogs.map(blog => {
-        if(blog.id === data.id){
-          return data
-        } else {
-          return blog
-        }}
-        ))
-      const updatedUserCopy = {...user}
-      updatedUserCopy.blogs = updatedBlogs
-      setUser(updatedUserCopy)
-  })
-    navigate(`/blogs/${id}`)
+      .then(resp => resp.json())
+      .then(data => {
+        setBlogs((blogs)=>blogs.map(blog =>{
+          if(blog.id === data.id){
+            return data
+          } else {
+            return blog
+          }})
+        )
+        const updatedBlogs = (user.blogs.map(blog => {
+          if(blog.id === data.id){
+            return data
+          } else {
+            return blog
+          }})
+        )
+        const updatedUserCopy = {...user}
+        updatedUserCopy.blogs = updatedBlogs
+        setUser(updatedUserCopy)
+      })
+      navigate(`/blogs/${id}`)
   } 
 
 if (loggedIn){

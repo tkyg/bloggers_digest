@@ -6,6 +6,7 @@ function UserProvider({ children }) {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [blogs, setBlogs] = useState([])
+  const [errors, setErrors] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -39,16 +40,33 @@ function UserProvider({ children }) {
         content: blog.content
       })
     })
-    .then(resp => resp.json())
-    .then(data => {
-      const newBlogList = [data, ...blogs]
-      const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
-      const userCopy = {...user}
-      userCopy.blogs = userNewBlogsList
-      setUser(userCopy)
-      setBlogs(newBlogList)
-      navigate('/blogs')
-    })
+    .then((response) => {
+      if (!response.ok) {
+        response.json().then((errorData) => setErrors(errorData.errors));
+      } else {
+      response.json()
+      .then(data => {
+        const newBlogList = [data, ...blogs]
+        const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
+        const userCopy = {...user}
+        userCopy.blogs = userNewBlogsList
+        setUser(userCopy)
+        setBlogs(newBlogList)
+        navigate('/blogs')
+      })
+    }
+  })
+    
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   const newBlogList = [data, ...blogs]
+    //   const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
+    //   const userCopy = {...user}
+    //   userCopy.blogs = userNewBlogsList
+    //   setUser(userCopy)
+    //   setBlogs(newBlogList)
+    //   navigate('/blogs')
+    // })
   }
 
   const login = (user) => {
@@ -69,7 +87,7 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{user, login, logout, signup, loggedIn, blogs, addBlog, setUser, setBlogs}}>
+    <UserContext.Provider value={{user, login, logout, signup, loggedIn, blogs, addBlog, setUser, setBlogs, errors, setErrors}}>
       {children}
     </UserContext.Provider>
   )

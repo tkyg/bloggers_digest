@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   
-  # skip_before_action :authenticate_user, only: [:index, :show]
+  skip_before_action :authenticate_user, only: [:index, :show]
 
   # def index
   #   blogs = current_user.blogs
@@ -12,9 +12,9 @@ class BlogsController < ApplicationController
   end
 
   def show
-    blog = Blog.find_by(id:params[:id])
-    if blog 
-      render json: blog, status: :ok
+    @blog = Blog.find_by(id:params[:id])
+    if @blog 
+      render json: @blog, status: :ok
     else
       render json: { error: "Blog not found"}, status: :not_found
     end
@@ -71,7 +71,8 @@ class BlogsController < ApplicationController
   def blog_params
     params.permit(:title, :content, :created_at)
   end
-  # def blogs_params
-  #   params.require(:blog).permit(:title, :content)
-  # end
 end
+
+# def blogs_params
+#   params.require(:blog).permit(:title, :content)
+# end

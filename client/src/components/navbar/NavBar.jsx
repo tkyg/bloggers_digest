@@ -30,6 +30,7 @@ const NavBar = () => {
             <li className="topListItem"><Link to='/' className="link">Home</Link></li>
             <li className="topListItem"><Link to='/blogs' className="link">Blogs</Link></li>
             <li className="topListItem"><Link to='/profile' className="link">Profile</Link></li>
+            <li className="topListItem"><Link to='/reviews' className="link">Reviewed Blogs</Link></li>
           </ul>
         </div>
         <div className="topRight">

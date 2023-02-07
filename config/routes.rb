@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
+  get "/reviews", to: 'reviews#index'
+
   # patch "/reviews/:id/likes", to: "reviews#increment_likes"
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
