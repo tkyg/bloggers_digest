@@ -8,7 +8,7 @@ const BlogsReviewed = () => {
 
   useEffect(() => {
     fetch('/reviews')
-      .then(response => response.json())
+      .then(resp => resp.json())
       .then(data => {
         setReviews(data.filter(review => review.user.id === user.id))
       })

@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect, useContext }from 'react'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/User'
@@ -6,17 +5,15 @@ import ReviewForm from '../review/ReviewForm'
 import '../blogStyle/blogDetails.css'
 
 const BlogDetails = () => {
-  const [singleBlog, setSingleBlog] = useState({})
   const { user, setUser, setBlogs } = useContext(UserContext)
-  const {id} = useParams()
   const [currentBlog, setCurrentBlog] = useState({reviews: []})
+  const {id} = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`/blogs/${id}`)
       .then(resp => resp.json())
       .then(data => {
-        setSingleBlog(data)
         setCurrentBlog(data)
       })
   }, [id])
@@ -32,74 +29,86 @@ const BlogDetails = () => {
   }
 
   const addReview = (data) => {
-    console.log(data)
     setCurrentBlog(data)
   }
 
-  if(user.id && singleBlog.user && user.id === singleBlog.user.id){
+  if(user.id && currentBlog.user && user.id === currentBlog.user.id){
     return (
-      <div className="singleBlog">
-        <div className="singleBlogWrapper">
-          <NavLink to={`/blogs/${id}/edit`}>
-            <div className="singleBlogEdit">
-              <i className="singleBlogIcon fa-regular fa-pen-to-square"> Edit Blog
-              </i>
-            </div>
-          </NavLink>
-          <div className="singleBlogDelete">
-            <i className="singleBlogIcon fa-regular fa-trash-can" onClick={() => deleteBlog(singleBlog.id)}> Delete Blog
-            </i>
+      <div>
+        <div className="singleBlog">
+          <div className="singleBlogWrapper">
+            <NavLink to={`/blogs/${id}/edit`}>
+              <div className="singleBlogEdit">
+                <i className="singleBlogIcon fa-regular fa-pen-to-square"> 
+                  Edit Blog
+                </i>
+              </div>
+            </NavLink>
+              <div className="singleBlogDelete">
+                <i className="singleBlogIcon fa-regular fa-trash-can" onClick={() => deleteBlog(currentBlog.id)}>
+                  Delete Blog
+                </i>
+              </div>
+            <NavLink to={'/blogs'}>
+              <div className="singleBlogReturn">
+                <i className="fa-solid fa-arrow-left"> 
+                  Return
+                </i>
+              </div>
+            </NavLink>
+            <br/>
+            <h1 className="singleBlogTitle">
+              {currentBlog.title}
+            </h1>
+            <p className='singleBlogContent'>
+              {currentBlog.content}
+            </p>
           </div>
+        </div>
+        <br/>
+        <br/>
+          <div className='comment'>Comments</div>
+          <div className='commentText'>
+            {currentBlog.reviews.map((review, index) => (
+              <div key={index}>
+                <p className='reviewAuthor'>{review.user.username}: {review.comment}</p>
+              </div>
+              ))}            
+          </div>
+      </div>
+      )
+  } else {
+    return (
+      <div>
+        <div className="singleBlog">
           <NavLink to={'/blogs'}>
             <div className="singleBlogReturn">
-              <i className="fa-solid fa-arrow-left"> Return
+              <i className="fa-solid fa-arrow-left"> Back to Blogs
               </i>
             </div>
           </NavLink>
           <br/>
           <h1 className="singleBlogTitle">
-            {singleBlog.title}
+            {currentBlog.title}
           </h1>
           <p className='singleBlogContent'>
-            {singleBlog.content}
+            {currentBlog.content}
           </p>
+          <br/>
         </div>
-        <div> Comments:
-          {currentBlog.reviews.map((review, index) => (
-            <div key={index}>
-              <p>{review.comment}</p>
-            </div>
-            ))}    
-        </div>
-      </div>
-      )
-  } else {
-    return (
-      <div className="singleBlog">
-        <NavLink to={'/blogs'}>
-          <div className="singleBlogReturn">
-            <i className="fa-solid fa-arrow-left"> Back to Blogs
-            </i>
-          </div>
-        </NavLink>
         <br/>
-        <h1 className="singleBlogTitle">
-          {singleBlog.title}
-        </h1>
-        <p className='singleBlogContent'>
-          {singleBlog.content}
-        </p>
         <br/>
-        <ReviewForm addReview={addReview}/>
-        <br/>
-        <div> 
-          Comments:
-          {currentBlog.reviews.map(review => (
-            <div key={review.id}>
-              <li>{review.comment}</li>
-            </div>
-          ))}
-        </div>
+          <ReviewForm addReview={addReview}/>
+          <br/>
+          <div className='comment'>Comments</div>
+          {/* <div className='commentText'> */}
+            {currentBlog.reviews.map(review => (
+              <div className='commentText' key={review.id}>
+                <span className='userReviewAuthor'>{review.user.username}: </span>
+                <span className='userReviewComment'>{review.comment}</span>
+              </div>
+            ))}
+          {/* </div> */}
       </div>
     )
   }

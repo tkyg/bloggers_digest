@@ -87,3 +87,29 @@
   margin-top: 15px;
   margin-right: 10px;
 }
+
+.comment{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.commentText{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* .userReviewAuthor{
+  font-family: 'Times New Roman', Times, serif;
+  float: left;
+  width: 30%;
+
+}
+
+.userReviewComment{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: 14px;
+  float: right;
+  width: 30%;
+  
+} */

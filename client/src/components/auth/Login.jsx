@@ -65,8 +65,7 @@ const Login = () => {
         <ul>
         {errorsList}
       </ul>
-      </div>
-    // </div>
+    </div>
   )
 }
 

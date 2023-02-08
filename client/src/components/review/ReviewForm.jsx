@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../context/User'
+import '../review/reviewForm.css'
 
 const ReviewForm = ({addReview}) => {
   const [comment, setComment] = useState('');
@@ -24,9 +25,9 @@ const ReviewForm = ({addReview}) => {
         return resp.json();
       })
       .then(data => {
-        setComment('')
         addReview(data)
         // blog object
+        setComment('')
         setErrors({})
       })
       .catch(error => {
@@ -42,6 +43,7 @@ const ReviewForm = ({addReview}) => {
           <textarea
             type="text"
             placeholder="Write a comment..."
+            className='textArea'
             value = {comment}
             onChange= {(e) => setComment(e.target.value)}
           />
