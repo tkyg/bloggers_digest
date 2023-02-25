@@ -12,8 +12,6 @@ import BlogDetails from './components/blog/BlogDetails'
 import BlogsReviewed from './components/review/BlogsReviewed'
 import './App.css'
 
-
-
 function App(props){
 
   return (

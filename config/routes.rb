@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
   # resources :blogs, only: [:index, :show, :create, :update, :destroy]
-  # resources :reviews, only: [:index, :show, :create]
   resources :blogs do
     resources :reviews, only: [:create]
   end
+  
+  resources :reviews, only: [:index, :show]
 
-  get "/reviews", to: 'reviews#index'
+  # get "/reviews", to: 'reviews#index'
 
   # patch "/reviews/:id/likes", to: "reviews#increment_likes"
   post "/login", to: 'sessions#create'

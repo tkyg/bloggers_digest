@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 const UserContext = React.createContext()
 
 function UserProvider({ children }) {
@@ -40,33 +41,24 @@ function UserProvider({ children }) {
         content: blog.content
       })
     })
-    .then((response) => {
-      if (!response.ok) {
-        response.json().then((errorData) => setErrors(errorData.errors));
+    .then((resp) => {
+      if (!resp.ok) {
+        resp.json().then((data) => {
+          setErrors(data.errors)
+        });
       } else {
-      response.json()
-      .then(data => {
-        const newBlogList = [data, ...blogs]
-        const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
-        const userCopy = {...user}
-        userCopy.blogs = userNewBlogsList
-        setUser(userCopy)
-        setBlogs(newBlogList)
-        navigate('/blogs')
-      })
-    }
-  })
-    
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   const newBlogList = [data, ...blogs]
-    //   const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
-    //   const userCopy = {...user}
-    //   userCopy.blogs = userNewBlogsList
-    //   setUser(userCopy)
-    //   setBlogs(newBlogList)
-    //   navigate('/blogs')
-    // })
+        resp.json()
+        .then(data => {
+          const newBlogList = [data, ...blogs]
+          const userNewBlogsList = newBlogList.filter(blog => blog.user.id === data.user.id)
+          const userCopy = {...user}        
+          userCopy.blogs = userNewBlogsList     
+          setUser(userCopy)         
+          setBlogs(newBlogList)
+          navigate('/blogs')
+        })
+      }
+    })
   }
 
   const login = (user) => {
@@ -87,11 +79,10 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{user, login, logout, signup, loggedIn, blogs, addBlog, setUser, setBlogs, errors, setErrors}}>
+    <UserContext.Provider value={{ login, logout, signup, loggedIn, user, setUser, blogs, setBlogs, addBlog, errors, setErrors }}>
       {children}
     </UserContext.Provider>
   )
-
 }
 
 export { UserContext, UserProvider };

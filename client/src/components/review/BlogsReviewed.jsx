@@ -1,19 +1,22 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { UserContext } from '../context/User'
+import React, { useState, useEffect, useContext } from 'react'
+import { UserContext } from '../context/User';
+
+
 import './blogsReviewed.css'
 
 const BlogsReviewed = () => {
   const [reviews, setReviews] = useState([]);
-  const { user } = useContext(UserContext)
+  const { loggedIn } = useContext(UserContext)
 
   useEffect(() => {
     fetch('/reviews')
       .then(resp => resp.json())
       .then(data => {
-        setReviews(data.filter(review => review.user.id === user.id))
+        setReviews(data)
       })
-  }, [user.id])
+  }, [])
 
+  if (loggedIn) {
   return (
     <div className='reviews'>
       <div className='reviewInfo'>
@@ -29,6 +32,11 @@ const BlogsReviewed = () => {
       </div>
     </div>
   )
+} else {
+  return (
+    <div style={{fontFamily: 'Aboreto', color: '#b43a3a', lineHeight : 10, padding: 20}}>Please log in to access this page</div>
+  )
+}
 }
 
 export default BlogsReviewed

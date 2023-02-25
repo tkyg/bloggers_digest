@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   
-  skip_before_action :authenticate_user, only: [:index, :show]
+  skip_before_action :authenticate_user
+  # , only: [:index, :show]
 
   # def index
   #   blogs = current_user.blogs
@@ -40,13 +41,25 @@ class BlogsController < ApplicationController
 
   def update
     blog = Blog.find_by(id:params[:id])
-    if blog
-      blog.update(blog_params)
+    # blog = Blog.find(params[:id])
+    if blog.update(blog_params)
       render json: blog, status: :accepted
     else
-      render json: { error: "Blog not found" }, status: :not_found
+      render json: { error: blog.errors }, status: :unprocessable_entity
+      # render json: { error: "Blog not found" }, status: :not_found
     end
   end
+
+  # def update
+  #   @blog = Blog.find(params[:id])
+  #   if @blog.update(blog_params)
+  #     render json: blog, status: :accepted
+  #     # handle successful update
+  #   else
+  #     # handle unsuccessful update
+  #     render json: { errors: @blog.errors }, status: :unprocessable_entity
+  #   end
+  # end
 
   def destroy
     blog = Blog.find_by(id:params[:id])

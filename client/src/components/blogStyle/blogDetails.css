@@ -98,13 +98,10 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* .userReviewAuthor{
-  font-family: 'Times New Roman', Times, serif;
-  float: left;
-  width: 30%;
-
+.userReviewAuthor{
+  font-weight: 600;
 }
-
+/* 
 .userReviewComment{
   font-family: 'Times New Roman', Times, serif;
   font-weight: 500;

@@ -7,7 +7,7 @@ const Blogs = () => {
   const { blogs, loggedIn } = useContext(UserContext)
 
   if(loggedIn) {
-    const blogsList = blogs.map((blog, index) => <BlogCard key={index} blog={blog}/>)
+    const blogsList = blogs.map((blog) => <BlogCard key={blog.id} blog={blog}/>)
     return (
       <div className='blogs'>
         <br/>
@@ -17,7 +17,9 @@ const Blogs = () => {
       </div>
     )
   } else {
-    return (<h3>Please Login or Signup to Read and Post a Blog</h3>)
+    return (
+      <div style={{fontFamily: 'Aboreto', color: '#b43a3a', lineHeight : 10, padding: 20}}>Please log in to access this page</div>
+    )
   }
 }
 

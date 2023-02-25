@@ -6,7 +6,7 @@ const UserBlogCard = ({blog}) => {
   return (
     <div className="blog">
       <div className="blogInfo">
-        <NavLink to={`/blogs/${blog.id}`}>
+        <NavLink style={{textDecoration: "none"}} to={`/blogs/${blog.id}`}>
           <span className="blogTitle" style={{textDecoration: "none"}}>
             {blog.title}
           </span>

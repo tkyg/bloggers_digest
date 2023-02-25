@@ -1,9 +1,15 @@
 class ReviewsController < ApplicationController
-skip_before_action :authenticate_user, only: [:index, :show, :create]
+skip_before_action :authenticate_user
+# , only: [:index, :show, :create]
+
+  # def index
+  #   @reviews = Review.all
+  #   render json: @reviews
+  # end
 
   def index
-    @reviews = Review.all
-    render json: @reviews
+    reviews = current_user.reviews
+    render json: reviews, status: :ok
   end
 
   def show
@@ -20,8 +26,6 @@ skip_before_action :authenticate_user, only: [:index, :show, :create]
     @review = @blog.reviews.build(review_params)
     @review.user = current_user
     if @review.save
-      # .save checks validations
-      # render json instead of redirect
       render json: @blog
     else 
       render json: { errors: @review.errors.messages }, status: :unprocessable_entity

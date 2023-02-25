@@ -9,7 +9,7 @@ const Profile = () => {
   const [formFlag, setFormFlag] = useState(false)
 
   if (loggedIn) {
-    const userBlogsList = user.blogs.map((blog, index) => <UserBlogCard key={index} blog={blog}/>)
+    const userBlogsList = user.blogs.map((blog) => <UserBlogCard key={blog.id} blog={blog}/>)
       return (
         <div className='profile'>
           {formFlag ?
@@ -26,7 +26,7 @@ const Profile = () => {
       )
   } else {
     return (
-     <h3>Not Authorized - Please Signup or Login</h3>
+      <div style={{fontFamily: 'Aboreto', color: '#b43a3a', lineHeight : 10, padding: 20}}>Please log in to access this page</div>
     )
   }
 }

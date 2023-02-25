@@ -17,21 +17,23 @@ const BlogForm = () => {
   }
   return (
     <div className="write">
+      {/* {errors ? errors.map((e) => <div key={e.id}>{e}</div>) : null} */}
       <div className='bar error'>
         {errors.length > 0 && (
           <ul style={{ color: "red" }}>
             {errors.map((error) => (
-              <p key={error}>{error}</p>
+              <p key={error.id}>{error}</p>
             ))}
           </ul>
         )}
+
       </div>
       <form className='writeForm' onSubmit={handleSubmit}>
         <div className="writeFormGroup">
           <input
             type="text"
-            name="title"
             id="title"
+            name="title"
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
@@ -43,8 +45,8 @@ const BlogForm = () => {
           <textarea
             type="text"
             id="content"
-            placeholder="Write your blog..."
             name='content'
+            placeholder="Write your blog..."
             className="writeInput writeText"
             value={content}
             onChange={(e) => setContent(e.target.value)}

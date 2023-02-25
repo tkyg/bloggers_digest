@@ -6,7 +6,7 @@ import '../review/reviewForm.css'
 const ReviewForm = ({addReview}) => {
   const [comment, setComment] = useState('');
   const [errors, setErrors] = useState({})
-  const { user } = useContext(UserContext)
+  const { loggedIn } = useContext(UserContext)
   const { id } = useParams()
 
   const handleSubmit = async (e) => {
@@ -26,7 +26,6 @@ const ReviewForm = ({addReview}) => {
       })
       .then(data => {
         addReview(data)
-        // blog object
         setComment('')
         setErrors({})
       })
@@ -36,7 +35,7 @@ const ReviewForm = ({addReview}) => {
         })
       })
   }
-  if(user){
+  if(loggedIn){
     return (
       <form onSubmit={handleSubmit}>
         <div>
@@ -58,9 +57,7 @@ const ReviewForm = ({addReview}) => {
     )
   } else {
     return (
-      <h3>
-        Please Login
-      </h3>
+      <div style={{fontFamily: 'Aboreto', color: '#b43a3a', lineHeight : 10, padding: 20}}>Please log in to access this page</div>
     )
   }
 }

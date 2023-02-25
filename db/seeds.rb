@@ -5,6 +5,8 @@ u# This file should contain all the record creation needed to seed the database 
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# a more optimal way because it doesn't have to parse through the object to get the id. 
+# Review.create(comment: "The dumplings", blog_id: b1.id, user_id: user1.id)
 puts "🐕 Seeding data..."
 
 Blog.destroy_all
