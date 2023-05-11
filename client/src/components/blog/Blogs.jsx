@@ -18,7 +18,9 @@ const Blogs = () => {
     )
   } else {
     return (
-      <div style={{fontFamily: 'Aboreto', color: '#b43a3a', lineHeight : 10, padding: 20}}>Please log in to access this page</div>
+      <div style={{fontFamily: 'Aboreto', color: '#b43a3a', lineHeight : 10, padding: 20}}>
+        Please log in to access this page
+      </div>
     )
   }
 }

@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   
   resources :reviews, only: [:index, :show]
 
-  # get "/reviews", to: 'reviews#index'
+  get "/blogs/length/:number", to: 'blogs#blog_length'
 
-  # patch "/reviews/:id/likes", to: "reviews#increment_likes"
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
 
@@ -22,3 +21,5 @@ Rails.application.routes.draw do
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
+
+

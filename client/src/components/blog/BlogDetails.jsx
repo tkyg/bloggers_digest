@@ -31,6 +31,7 @@ const BlogDetails = () => {
   const addReview = (data) => {
     setCurrentBlog(data)
   }
+
   if (loggedIn) {
     if(user.id && currentBlog.user && user.id === currentBlog.user.id){
       return (

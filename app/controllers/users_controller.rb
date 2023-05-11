@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   skip_before_action :authenticate_user, only: [:index, :show, :create]
+  
   def index
     render json: User.all
   end
@@ -23,7 +24,6 @@ class UsersController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
 
   private
 

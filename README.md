@@ -22,7 +22,7 @@ Demonstrated in this gif is how easily this single page application can be used.
 To read my blog on how to perform CRUD in Ruby on Rails [Click Here](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)
 Or to read about Rails Generators [Click Here](https://medium.com/@ttenkyong/rails-generator-the-basics-e132c616b9ec)
 
-For a quick walk-through of my full-stack project, and available features [Click Here](https://youtu.be/EmxhXOaBK40)
+For a quick walk-through of my full-stack project, and available features [Click Here](https://youtu.be/4-bv2-VpJno)
 
 ## Installation
 1. Fork and clone the repo

@@ -16,7 +16,7 @@ const Signup = () => {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
-        username:username, 
+        username: username, 
         password: password
       })
     })
@@ -28,7 +28,7 @@ const Signup = () => {
       } else {
         setUsername('')
         setPassword('')
-        const errorList = user.errors.map(e => <li>{e}</li>)
+        const errorList = user.errors.map((e, index) => <li key={index}>{e}</li>)
         setErrorsList(errorList)
       }
     })

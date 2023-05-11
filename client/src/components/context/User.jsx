@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const UserContext = React.createContext()
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
   const [loggedIn, setLoggedIn] = useState(false)
   const [blogs, setBlogs] = useState([])
   const [errors, setErrors] = useState([])

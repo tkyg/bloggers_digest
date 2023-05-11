@@ -1,12 +1,6 @@
 class BlogsController < ApplicationController
   
   skip_before_action :authenticate_user
-  # , only: [:index, :show]
-
-  # def index
-  #   blogs = current_user.blogs
-  #   render json: blogs, status: :ok
-  # end
 
   def index
     render json: Blog.all, status: :ok
@@ -21,16 +15,7 @@ class BlogsController < ApplicationController
     end
   end
 
-  # def show
-  #   blog = current_user.blogs.find_by(id:params[:id])
-  #   if blog
-  #     render json: blog, status: :ok
-  #   else
-  #     render json: { error: "Blog not found" }, status: :unauthorized
-  #   end
-  # end
-
-  def create #POST
+  def create
     blog = current_user.blogs.create(blog_params)
     if blog.valid?
       render json: blog, status: :created
@@ -41,25 +26,12 @@ class BlogsController < ApplicationController
 
   def update
     blog = Blog.find_by(id:params[:id])
-    # blog = Blog.find(params[:id])
     if blog.update(blog_params)
       render json: blog, status: :accepted
     else
       render json: { error: blog.errors }, status: :unprocessable_entity
-      # render json: { error: "Blog not found" }, status: :not_found
     end
   end
-
-  # def update
-  #   @blog = Blog.find(params[:id])
-  #   if @blog.update(blog_params)
-  #     render json: blog, status: :accepted
-  #     # handle successful update
-  #   else
-  #     # handle unsuccessful update
-  #     render json: { errors: @blog.errors }, status: :unprocessable_entity
-  #   end
-  # end
 
   def destroy
     blog = Blog.find_by(id:params[:id])
@@ -70,22 +42,24 @@ class BlogsController < ApplicationController
       render json: { error: "Blog not found" }, status: :not_found
     end
   end
-  # def destroy
-  #   @blog.destroy
-  #   render json: @blog
-  # end
+
+  def blog_length
+    # word = params[:number]
+    # byebug
+    # result = Blog.where('length(content) >= ?', word.to_i)
+    result = Blog.where('length(content) >= ?', (params[:number]).to_i)
+    render json: result
+  end
 
   private
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
+  # def current_user
+  #   User.find_by(id: session[:user_id])
+  # end
 
   def blog_params
     params.permit(:title, :content, :created_at)
   end
 end
 
-# def blogs_params
-#   params.require(:blog).permit(:title, :content)
-# end
+# go though blogs content and return blogs that have content characters more than 50. 

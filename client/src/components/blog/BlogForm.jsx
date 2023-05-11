@@ -17,12 +17,11 @@ const BlogForm = () => {
   }
   return (
     <div className="write">
-      {/* {errors ? errors.map((e) => <div key={e.id}>{e}</div>) : null} */}
       <div className='bar error'>
         {errors.length > 0 && (
           <ul style={{ color: "red" }}>
-            {errors.map((error) => (
-              <p key={error.id}>{error}</p>
+            {errors.map((error, index) => (
+              <p key={index}>{error}</p>
             ))}
           </ul>
         )}

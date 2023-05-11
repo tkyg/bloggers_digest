@@ -1,14 +1,9 @@
 class ReviewsController < ApplicationController
-skip_before_action :authenticate_user
-# , only: [:index, :show, :create]
-
-  # def index
-  #   @reviews = Review.all
-  #   render json: @reviews
-  # end
+skip_before_action :authenticate_user, only: [:index, :increment_likes]
 
   def index
     reviews = current_user.reviews
+    # reviews = Review.all
     render json: reviews, status: :ok
   end
 
@@ -31,45 +26,21 @@ skip_before_action :authenticate_user
       render json: { errors: @review.errors.messages }, status: :unprocessable_entity
     end
   end
-  
-  
+
+  def increment_likes
+    # byebug
+    review = Review.find_by(id: params[:id])
+    if review 
+      review.update(likes: review.likes + 1)
+      render json: review
+    else
+      render json: {error: "review not found" }, status: :not_found
+    end
+  end
+
   private
   
   def review_params
-    params.require(:review).permit(:comment)
+    params.require(:review).permit(:comment, :likes)
   end
 end
-
-
-# def update
-#   review = Review.find_by(id:params[:id])
-#   if review
-#     review.update(review_params)
-#     render json: review, status: :accepted
-#   else
-#     render json: { error: "Review not found" }, status: :not_found
-#   end
-# end
-
-# def destroy
-#   review = Review.find_by(id:params[:id])
-#   if review
-#     review.destroy
-#     head :no_content
-#   else
-#     render json: { error: "Review not found" }, status: :not_found
-#   end
-# end
-
-# def create
-#   @review = Review.new(review_params)
-#   if @review.save
-#     render json: @review, status: :created
-#   else
-#     render json: {errors: @review.errors.full_messages }, status: :unprocessable_entity
-#   end
-# end
-
-# def index
-  #   render json: Review.all, status: :ok
-  # end

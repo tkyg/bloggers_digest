@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../context/User';
-
-
 import './blogsReviewed.css'
 
 const BlogsReviewed = () => {
@@ -15,6 +13,7 @@ const BlogsReviewed = () => {
         setReviews(data)
       })
   }, [])
+
 
   if (loggedIn) {
   return (
