@@ -60,3 +60,23 @@
   border-radius: 5px;
   list-style: none;
 }
+
+@media (max-width: 768px) {
+  .topLeft,
+  .topRight {
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  /* .topCenter {
+    display: none;
+  } */
+
+  .topIcon {
+    margin-right: 0;
+  }
+
+  .topListItem {
+    margin-right: 10px;
+  }
+}

@@ -9,7 +9,7 @@
   border-bottom: 1px solid black;
   max-width: 600px;
   max-height: 800px;
-  margin: auto;
+  margin: 20px auto;
   padding: 20px;
   text-align: center;
   font-size: 16px;
@@ -50,4 +50,31 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+.noCommentsMsg {
+  font-family: 'Aboreto', sans-serif;
+  font-size: 14px;
+  color: #b43a3a;
+  line-height: 20px;
+  margin-top: 15px;
+  white-space: nowrap; /* Prevent line wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .review {
+    max-width: 100%; /* Adjusted max-width for better responsiveness */
+    margin: 20px 10px; /* Adjusted margin for better spacing */
+  }
+
+  .blogReviewTitle {
+    font-size: 16px; /* Adjusted font size for mobile screens */
+  }
+
+  .blogReviewContent {
+    font-size: 12px;
+    -webkit-line-clamp: 2; /* Show up to 2 lines of content on mobile */
+  }
 }

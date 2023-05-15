@@ -8,6 +8,7 @@
   align-items: center;
   font-family: 'Aboreto', cursive;
   color: #444;
+  text-align: center;
 }
 /* .headerTitleSm{
   position: absolute;
@@ -18,4 +19,9 @@
   /* position: absolute; */
   top: 20%;
   font-size: 100px;
+}
+@media (max-width: 768px) {
+  .headerTitleLg {
+    font-size: 60px; /* Adjust the font size for mobile screens */
+  }
 }

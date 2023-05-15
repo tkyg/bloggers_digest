@@ -18,6 +18,7 @@ const BlogsReviewed = () => {
   if (loggedIn) {
   return (
     <div className='reviews'>
+      {reviews.length > 0 ? (
       <div className='reviewInfo'>
         {reviews.map(review => (
           <div className='review' key={review.id}>
@@ -29,6 +30,11 @@ const BlogsReviewed = () => {
           </div>
         ))}
       </div>
+      ) : (
+        <div className='noCommentsMsg'>
+          There are no blogs you've commented on.
+        </div>
+      )}
     </div>
   )
 } else {

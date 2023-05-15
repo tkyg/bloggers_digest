@@ -19,7 +19,7 @@ const Home = () => {
       <br/>
       <p>To write a new blog, edit, or delete a posted blog navigate to your Profile page.</p>
       <br/>
-      <p>For a list of all the blogs you have left a comment on navigate to Reviewed Blogs.</p>
+      <p>For a list of all the blogs you have left a comment on navigate to Commented Blogs.</p>
     </div>
     )
   } else {
