@@ -12,20 +12,23 @@
 
 ActiveRecord::Schema.define(version: 2023_01_05_135421) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "likes", default: 0, null: false
     t.text "comment"
-    t.integer "user_id", null: false
-    t.integer "blog_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "blog_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["blog_id"], name: "index_reviews_on_blog_id"
