@@ -15,11 +15,15 @@
   flex: 3;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .topCenter{
-  flex: 6
+  flex: 6;
+  display: flex;
+  justify-content: center;
+  /* overflow-x: auto; */
+  white-space: nowrap; 
 }
 
 .topIcon{
@@ -68,9 +72,9 @@
     justify-content: flex-start;
   }
 
-  /* .topCenter {
-    display: none;
-  } */
+  .topCenter {
+    flex: 4;
+  }
 
   .topIcon {
     margin-right: 0;

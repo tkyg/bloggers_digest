@@ -19,7 +19,8 @@ Demonstrated in this gif is how easily this single page application can be used.
 ![Navigation Demo](https://media.giphy.com/media/84LygPIbjnHqd8zH7J/giphy.gif)
 
 ## Links
-To read my blog on how to perform CRUD in Ruby on Rails [Click Here](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)
+To read my blog on how to perform CRUD in Ruby on Rails [https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)
+
 Or to read about Rails Generators [Click Here](https://medium.com/@ttenkyong/rails-generator-the-basics-e132c616b9ec)
 
 For a quick walk-through of my full-stack project, and available features [Click Here](https://youtu.be/4-bv2-VpJno)
