@@ -2,7 +2,7 @@
 # **BLOGGER'S DIGEST**
 
 ## Description
-Blogger's Digest is a blogging app made for writing enthusiasts. It's an app for storytellers that want to share to the world a figment of their imagination, it's for travel bloggers that want to tell tales of their adventures, it's for the connoisseurs that want to give instructions for, "The best guide to...", it's a place that has a compliations of materials and information, a platform for a user to share their thoughts and ideas.
+Blogger's Digest is a blogging application made for passionate writers. It's an app for storytellers that want to share to the world a figment of their imagination, it's for travel bloggers longing to recount their thrilling adventures, it's for the connoisseur seeking to provide expert instructions in the form of "The best guide to...", it serves as a centralized hub, gathering a wealth of materials and information, and offers a platform for users to express and distribute their thoughts and ideas.
 
 Anyone can create an account simply by choosing a username and password, no email addresses required. 
 
@@ -19,7 +19,7 @@ Demonstrated in this gif is how easily this single page application can be used.
 ![Navigation Demo](https://media.giphy.com/media/84LygPIbjnHqd8zH7J/giphy.gif)
 
 ## Links
-To read my blog on how to perform CRUD in Ruby on Rails [Click Here](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)(https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)
+To read my blog on how to perform CRUD in Ruby on Rails [Click Here](https://medium.com/@ttenkyong/crud-in-rails-8e25a8f563d1)
 
 Or to read about Rails Generators [Click Here](https://medium.com/@ttenkyong/rails-generator-the-basics-e132c616b9ec)
 
